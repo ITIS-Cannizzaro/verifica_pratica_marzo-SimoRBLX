@@ -132,23 +132,54 @@ public class Cappelluti
             System.out.print(NumberArray[ NumberArray.length / 2 ]);
         }
     }
+
     public static void LancioRisiko()
     {
-        int[] NumberAttacker = new int[3];
-        int[] NumberDefender = new int[3];
-        for (int i = 0; i < 3; i++) {
+        int[] NumberAttacker = new int[ 3 ];
+        int[] NumberDefender = new int[ 3 ];
+        for (int i = 0; i < 3; i++)
+        {
             NumberAttacker[ i ] = (int) (Math.random() * (6 - 1 + 1) + 1);
             NumberDefender[ i ] = (int) (Math.random() * (6 - 1 + 1) + 1);
         }
         SortMethod(NumberAttacker);
         SortMethod(NumberDefender);
         int DestroyedTanks = 0;
-        for (int i = 0; i < 3; i++) {
-            if (NumberAttacker[i] > NumberDefender[i]) {
+        for (int i = 0; i < 3; i++)
+        {
+            if (NumberAttacker[ i ] > NumberDefender[ i ])
+            {
                 DestroyedTanks++;
             }
         }
-        System.out.println("Tanks destroyed: " + DestroyedTanks);
+        System.out.println("Carri distrutti: " + DestroyedTanks);
+    }
+
+    public static void UgualiConsecutivi()
+    {
+        int[] NumberArray = new int[ 20 ];
+        for (int i = 0; i < NumberArray.length; i++)
+        {
+            NumberArray[ i ] = (int) (Math.random() * (3 - (-3) + 1) + (-3));
+            if (i < NumberArray.length - 1)
+                System.out.print(NumberArray[ i ] + ", ");
+            else
+                System.out.println(NumberArray[ i ] + ".");
+        }
+        System.out.println("--------------");
+        boolean foundPair = false;
+        for (int i = 1; i < NumberArray.length; i++)
+        {
+            if (NumberArray[ i ] == NumberArray[ i - 1 ])
+            {
+                System.out.println("Numero: " + NumberArray[ i ] + ", Posizione: " + i);
+                foundPair = true;
+            }
+        }
+        if (!foundPair)
+        {
+            System.out.println("No numeri consecutivi trovati.");
+        }
     }
 
     public static void main(String[] args)
@@ -191,12 +222,18 @@ public class Cappelluti
                     LancioRisiko();
                     ActiveBool = false;
                     break;
+                case 7:
+                    System.out.println("--------------");
+                    UgualiConsecutivi();
+                    ActiveBool = false;
+                    break;
                 default:
                     System.out.println("Risposta errata. Riprovare.");
                     break;
             }
         }
     }
+
     public static void SortMethod(int ParamArray[])
     {
         int TemporaryNumber;
