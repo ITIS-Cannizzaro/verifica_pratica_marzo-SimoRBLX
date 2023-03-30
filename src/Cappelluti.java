@@ -96,7 +96,7 @@ public class Cappelluti
         System.out.println("--------------");
         for (int i = 0; i < NumberArray.length; i++)
         {
-            for (int j = 2; j <= 10; j++)
+            for (int j = 2; j < 10; j++)
             {
                 if (NumberArray[ i ] % j == 0)
                 {
