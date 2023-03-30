@@ -81,6 +81,35 @@ public class Cappelluti
         }
     }
 
+    public static void ArrayDivisori()
+    {
+        int[] NumberArray = new int[ 50 ];
+        int[] NumberCount = new int[ 8 ];
+        for (int i = 0; i < NumberArray.length; i++)
+        {
+            NumberArray[ i ] = (int) (Math.random() * (100 - 1 + 1) + 1);
+            if (i < NumberArray.length - 1)
+                System.out.print(NumberArray[ i ] + ", ");
+            else
+                System.out.println(NumberArray[ i ] + ".");
+        }
+        System.out.println("--------------");
+        for (int i = 0; i < NumberArray.length; i++)
+        {
+            for (int j = 2; j <= 10; j++)
+            {
+                if (NumberArray[ i ] % j == 0)
+                {
+                    NumberCount[ j - 2 ]++;
+                }
+            }
+        }
+        for (int i = 0; i < NumberCount.length; i++)
+        {
+            System.out.println("Numeri divisibili per " + (i + 2) + ": " + NumberCount[ i ]);
+        }
+    }
+
     public static void main(String[] args)
     {
         int ExerciseChoice;
@@ -104,6 +133,11 @@ public class Cappelluti
                 case 3:
                     System.out.println("--------------");
                     StampaPari();
+                    ActiveBool = false;
+                    break;
+                case 4:
+                    System.out.println("--------------");
+                    ArrayDivisori();
                     ActiveBool = false;
                     break;
                 default:
