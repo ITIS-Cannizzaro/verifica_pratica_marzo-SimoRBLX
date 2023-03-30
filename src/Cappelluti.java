@@ -110,6 +110,47 @@ public class Cappelluti
         }
     }
 
+    public static void StampaZigZag()
+    {
+        int[] NumberArray = new int[ 20 ];
+        for (int i = 0; i < NumberArray.length; i++)
+        {
+            NumberArray[ i ] = (int) (Math.random() * (10 - 0 + 1) + 0);
+            if (i < NumberArray.length - 1)
+                System.out.print(NumberArray[ i ] + ", ");
+            else
+                System.out.println(NumberArray[ i ] + ".");
+        }
+        System.out.println("--------------");
+        for (int i = 0; i < NumberArray.length / 2; i++)
+        {
+            System.out.print(NumberArray[ i ] + " ");
+            System.out.print(NumberArray[ NumberArray.length - 1 - i ] + " ");
+        }
+        if (NumberArray.length % 2 != 0)
+        {
+            System.out.print(NumberArray[ NumberArray.length / 2 ]);
+        }
+    }
+    public static void LancioRisiko()
+    {
+        int[] NumberAttacker = new int[3];
+        int[] NumberDefender = new int[3];
+        for (int i = 0; i < 3; i++) {
+            NumberAttacker[ i ] = (int) (Math.random() * (6 - 1 + 1) + 1);
+            NumberDefender[ i ] = (int) (Math.random() * (6 - 1 + 1) + 1);
+        }
+        SortMethod(NumberAttacker);
+        SortMethod(NumberDefender);
+        int DestroyedTanks = 0;
+        for (int i = 0; i < 3; i++) {
+            if (NumberAttacker[i] > NumberDefender[i]) {
+                DestroyedTanks++;
+            }
+        }
+        System.out.println("Tanks destroyed: " + DestroyedTanks);
+    }
+
     public static void main(String[] args)
     {
         int ExerciseChoice;
@@ -140,9 +181,36 @@ public class Cappelluti
                     ArrayDivisori();
                     ActiveBool = false;
                     break;
+                case 5:
+                    System.out.println("--------------");
+                    StampaZigZag();
+                    ActiveBool = false;
+                    break;
+                case 6:
+                    System.out.println("--------------");
+                    LancioRisiko();
+                    ActiveBool = false;
+                    break;
                 default:
                     System.out.println("Risposta errata. Riprovare.");
                     break;
+            }
+        }
+    }
+    public static void SortMethod(int ParamArray[])
+    {
+        int TemporaryNumber;
+        for (int i = 0; i < ParamArray.length - 1; i++)
+        {
+            for (int j = 0; j < ParamArray.length - 1 - i; j++)
+            {
+                // I parametri in input vengono copiati, e quando il metodo termina i valori input vengono persi.
+                if (ParamArray[ j + 1 ] < ParamArray[ j ])
+                {
+                    TemporaryNumber = ParamArray[ j + 1 ];
+                    ParamArray[ j + 1 ] = ParamArray[ j ];
+                    ParamArray[ j ] = TemporaryNumber;
+                }
             }
         }
     }
